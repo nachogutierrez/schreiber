@@ -20,7 +20,7 @@ const State = (function () {
     function handleScoreUpdate(state = {}) {
         const { card, text } = state
         let scoreUpdate = Score.MISS
-        if (text.toLowerCase() === card.back.toLowerCase()) {
+        if (text.toLowerCase().trim() === card.back.toLowerCase().trim()) {
             scoreUpdate = Score.HIT
         }
         card.score.add(scoreUpdate)
