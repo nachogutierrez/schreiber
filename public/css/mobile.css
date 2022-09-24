@@ -1,0 +1,27 @@
+@media only screen and (max-width: 768px) {
+    .input {
+        width: 95%;
+        font-size: 11px;
+    }
+
+    .log-history {
+        align-items: center;
+    }
+
+    .log-history .log {
+        flex-direction: column;
+        align-items: center;
+        /* padding-bottom: 8px; */
+        /* border-bottom: 1px dashed black; */
+    }
+
+    .correction {
+        /* flex-direction: column; */
+        /* align-items: center; */
+        margin-top: 4px;
+    }
+
+    /* .correction .arrow {
+        transform: rotate(90deg);
+    } */
+}

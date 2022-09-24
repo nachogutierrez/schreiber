@@ -2,9 +2,16 @@
     font-family: courier;
 }
 
+.app #current {
+    margin-bottom: 8px;
+}
+
+.app #score {
+    margin-bottom: 8px;
+}
+
 .grid-container {
     display: grid;
-    /* grid-template-columns: 48px 48px 48px 48px 48px 48px 48px; */
     align-items: center;
     justify-content: center;
 }
@@ -24,19 +31,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.app #current {
-    margin-bottom: 8px;
-}
-
-.app #score {
-    margin-bottom: 8px;
-}
-
-.input {
-    width: 512px;
-    font-size: 14px;
 }
 
 .front {
@@ -75,16 +69,28 @@
 }
 
 .correction {
-    padding: 4px;
-    border-radius: 4px;
-    background: rgba(0, 0, 0, 0.501);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.correction.correct {
+.correction .correct,
+.correction .incorrect {
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.correction .arrow {
+    transform: rotate(90deg);
+}
+
+.correction .correct {
+    background: rgba(0, 0, 0, 0.501);
     color: rgb(150, 255, 150);
 }
 
-.correction.incorrect {
+.correction .incorrect {
+    background: rgba(0, 0, 0, 0.501);
     color: rgb(255, 150, 150);
 }
 
@@ -115,14 +121,21 @@
     margin: 4px;
 }
 
-.log-history .log .correction {
-    margin-right: 4px;
+.divider {
+    width: 100%;
+    height: 1px;
+    margin: 8px;
+    background: black;
+}
+
+.log-history .log .score-update-and-card {
+    display: flex;
 }
 
 .log-history .log .front {
     margin-right: 8px;
 }
 
-.log-history .log .score-update {
-    margin-right: 8px;
+.score-update-and-card .front {
+    margin-left: 8px;
 }
