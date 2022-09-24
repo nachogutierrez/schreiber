@@ -3,8 +3,10 @@ const UI = (function () {
     const { range } = Util
 
     function renderLogHistory(logs = []) {
-        return `<div class='log-history'>${logs.map(renderLog).join('')}</div>`
+        return `<div class='log-history'>${logs.map(renderLog).join(renderDivider())}</div>`
     }
+
+    const renderDivider = () => `<div class='divider'></div>`
 
     function renderLog(log = {}) {
         const {
@@ -19,8 +21,10 @@ const UI = (function () {
 
         return (
             `<div class='log'>
-                ${renderScoreUpdate(scoreUpdate)}
-                ${renderCard(front, mem, maxMemSize)}
+                <div class='score-update-and-card'>
+                    ${renderScoreUpdate(scoreUpdate)}
+                    ${renderCard(front, mem, maxMemSize)}
+                </div>
                 ${renderCorrection({ text, back, scoreUpdate })}
             </div>`
         )
@@ -43,9 +47,19 @@ const UI = (function () {
         const { text, back, scoreUpdate } = props
         let correction = ''
         if (scoreUpdate === Score.MISS) {
-            correction = `<div class='correction incorrect'>${text}</div><img src='assets/arrow.svg' width='24px' height='24px'></img><div class='correction correct'>${back}</div>`
+            correction = (
+                `<div class='correction'>
+                    <div class='incorrect'>${text}</div>
+                    <img class='arrow' src='assets/arrow.svg' width='24px' height='24px'></img>
+                    <div class='correct'>${back}</div>
+                </div>`
+            )
         } else {
-            correction = `<div class='correction correct'>${back}</div>`
+            correction = (
+                `<div class='correction'>
+                    <div class='correct'>${back}</div>
+                </div>`
+            )
         }
 
         return correction
