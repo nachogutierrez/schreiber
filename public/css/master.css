@@ -1,0 +1,128 @@
+* {
+    font-family: courier;
+}
+
+.grid-container {
+    display: grid;
+    /* grid-template-columns: 48px 48px 48px 48px 48px 48px 48px; */
+    align-items: center;
+    justify-content: center;
+}
+
+.grid-container .grid-item {
+    padding: 8px;
+    text-align: center;
+    border: 1px solid black;
+    color: rgba(128, 128, 128, 0.753);
+}
+
+.grid-container .grid-item.header {
+    color: rgb(0, 0, 0);
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.app #current {
+    margin-bottom: 8px;
+}
+
+.app #score {
+    margin-bottom: 8px;
+}
+
+.input {
+    width: 512px;
+    font-size: 14px;
+}
+
+.front {
+    display: flex;
+    align-items: center;
+}
+
+.front .word {
+    margin-right: 8px;
+}
+
+.mem {
+    display: flex;
+    padding: 4px;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.501);
+}
+
+.mem .mem-value {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin: 2px;
+}
+
+.mem .mem-value.HIT {
+    background: rgb(150, 255, 150);
+}
+
+.mem .mem-value.MISS {
+    background: rgb(255, 150, 150)
+}
+
+.mem .mem-value.EMPTY {
+    background: rgb(255, 255, 255)
+}
+
+.correction {
+    padding: 4px;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.501);
+}
+
+.correction.correct {
+    color: rgb(150, 255, 150);
+}
+
+.correction.incorrect {
+    color: rgb(255, 150, 150);
+}
+
+.score-update {
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.score-update.MISS {
+    background: rgb(255, 150, 150);
+}
+
+.score-update.HIT {
+    background: rgb(150, 255, 150);
+}
+
+.log-history {
+    padding: 8px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.log-history .log {
+    display: flex;
+    align-items: center;
+    margin: 4px;
+}
+
+.log-history .log .correction {
+    margin-right: 4px;
+}
+
+.log-history .log .front {
+    margin-right: 8px;
+}
+
+.log-history .log .score-update {
+    margin-right: 8px;
+}
