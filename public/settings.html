@@ -13,26 +13,20 @@
 </head>
 
 <body>
-
-    <div class="app">
-        <div class="navbar">
-            <img class="settings" src="assets/settings.svg" alt="">
+    <div class="app-settings">
+        <h1>Training sets</h1>
+        <div class="training-sets">
         </div>
 
-        <div id="score"></div>
-        <div id="current"></div>
-        <input id="input" class="input" type="text" autocomplete="off" autocapitalize="none" autocorrect="off"
-            placeholder="Schreiben Sie im Singular und Plural mit Artikel...">
-        <p id="back"></p>
-        <div id="log"></div>
+        <button id="confirm-btn">confirm</button>
     </div>
 
+
     <script src="js/util.js"></script>
-    <script src="js/score.js"></script>
     <script src="js/ui.js"></script>
-    <script src="js/state.js"></script>
     <script src="js/storage.js"></script>
-    <script src="js/views/mainView.js"></script>
+    <script src="js/state.js"></script>
+    <script src="js/views/settingsView.js"></script>
 </body>
 
 </html>

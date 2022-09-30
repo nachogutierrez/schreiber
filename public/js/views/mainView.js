@@ -1,34 +1,33 @@
-const Main = (function () {
-
-    const { loadFlashcards, saveFlashcards } = Storage
-    const { determineNextFlashcard, calculateScoreBoard, handleScoreUpdate } = State
-
-    const state = {
-        logHistory: [],
-        flashcards: {},
-        card: undefined,
-        text: '',
-        scoreBoard: {}
-    }
+const MainView = (function () {
 
     async function start() {
         const bindings = bind()
+        const state = State.createState()
         await initState(state)
+        setListeners(bindings, state)
         loop(bindings, state)
     }
 
     async function initState(state) {
-        await loadFlashcards(state)
+        await State.loadSettings(state)
+        await State.loadFlashcards(state)
     }
 
     function bind() {
         return {
+            settingsButton: document.querySelector('.navbar .settings'),
             score: document.getElementById('score'),
             current: document.getElementById('current'),
             back: document.getElementById('back'),
             input: document.getElementById('input'),
             log: document.getElementById('log')
         }
+    }
+
+    function setListeners(bindings, state) {
+        bindings.settingsButton.addEventListener('click', () => {
+            window.location.href = 'settings.html'
+        })
     }
 
     function updateUI(bindings, state) {
@@ -39,12 +38,12 @@ const Main = (function () {
     }
 
     function loop(bindings, state) {
-        determineNextFlashcard(state)
-        calculateScoreBoard(state)
+        State.determineNextFlashcard(state)
+        State.calculateScoreBoard(state)
 
         updateUI(bindings, state)
 
-        const listener = function (e) {
+        const listener = async function (e) {
             // press enter
             if (e.keyCode === 13) {
 
@@ -53,8 +52,8 @@ const Main = (function () {
                     return
                 }
                 state.text = bindings.input.value
-                handleScoreUpdate(state)
-                saveFlashcards(state)
+                State.handleScoreUpdate(state)
+                await State.saveFlashcards(state)
                 bindings.input.removeEventListener('keypress', listener)
                 loop(bindings, state)
             }
@@ -69,4 +68,4 @@ const Main = (function () {
     }
 })()
 
-window.addEventListener('load', Main.start)
+window.addEventListener('load', MainView.start)

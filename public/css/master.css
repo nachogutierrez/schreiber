@@ -2,6 +2,43 @@
     font-family: courier;
 }
 
+html,
+body {
+    margin: 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    background: #f5f5da;
+    margin-bottom: 4px;
+}
+
+.navbar .settings {
+    padding: 4px;
+    transition: all .15s ease;
+    /* border-top-left-radius: 50%; */
+    /* border-bottom-left-radius: 50%; */
+    border-radius: 50%;
+}
+
+.navbar .settings:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+.app-settings {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.training-sets .training-set {
+    display: flex;
+    align-items: center;
+}
+
 .app #current {
     margin-bottom: 8px;
 }
