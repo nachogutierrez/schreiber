@@ -1,0 +1,47 @@
+[
+    {
+        "name": "Vokabular: Misc",
+        "description": "Here are all words that I don't know where else to put",
+        "url": "assets/trainingsets/vokabular_misc.json"
+    },
+    {
+        "name": "Vokabular: Menschen A1 Lektion 2",
+        "description": "Die Berufe",
+        "url": "assets/trainingsets/vokabular_menschen_a1_lektion_2.json"
+    },
+    {
+        "name": "Vokabular: Menschen A1 Lektion 3",
+        "description": "Die Familie",
+        "url": "assets/trainingsets/vokabular_menschen_a1_lektion_3.json"
+    },
+    {
+        "name": "Vokabular: Menschen A1 Lektion 4",
+        "description": "Die Möbel",
+        "url": "assets/trainingsets/vokabular_menschen_a1_lektion_4.json"
+    },
+    {
+        "name": "Vokabular: Menschen A1 Lektion 5",
+        "description": "die Objekte",
+        "url": "assets/trainingsets/vokabular_menschen_a1_lektion_5.json"
+    },
+    {
+        "name": "Vokabular: Menschen A1 Lektion 6",
+        "description": "Ich brauche kein Büro",
+        "url": "assets/trainingsets/vokabular_menschen_a1_lektion_6.json"
+    },
+    {
+        "name": "Vokabular: Menschen A1 Lektion 8",
+        "description": "Ich habe Zeit",
+        "url": "assets/trainingsets/vokabular_menschen_a1_lektion_8.json"
+    },
+    {
+        "name": "Vokabular: Menschen A1 Lektion 9",
+        "description": "Ich möchte was essen, Onkel Harry",
+        "url": "assets/trainingsets/vokabular_menschen_a1_lektion_9.json"
+    },
+    {
+        "name": "Vokabular: Menschen A1 Lektion 10",
+        "description": "Ich steige jetzt in die U-Bahn ein",
+        "url": "assets/trainingsets/vokabular_menschen_a1_lektion_10.json"
+    }
+]

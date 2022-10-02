@@ -1,5 +1,10 @@
 @media only screen and (min-width: 768px) {
 
+    .navbar .settings {
+        width: 32px;
+        height: 32px;
+    }
+
     .input {
         width: 512px;
         font-size: 14px;

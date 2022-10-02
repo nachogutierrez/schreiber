@@ -91,11 +91,21 @@ const UI = (function () {
         )
     }
 
+    function renderTrainingSet(trainingSet, i) {
+        return (
+            `<div class='training-set'>
+                <input type="checkbox" data-index="${i}" ${trainingSet.enabled ? 'checked' : ''}>
+                ${trainingSet.name} (${trainingSet.flashcards.length} flashcards)
+            </div>`
+        )
+    }
+
     return {
         renderLogHistory,
         renderLog,
         renderMem,
         renderCard,
-        renderScoreBoard
+        renderScoreBoard,
+        renderTrainingSet
     }
 })()

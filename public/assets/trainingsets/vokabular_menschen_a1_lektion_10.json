@@ -1,0 +1,17 @@
+[
+    ["Bahnhof", "der Bahnhof, die Bahnhöfe"],
+    ["Flughafen", "der Flughafen, die Flughäfen"], 
+    ["S-Bahn", "die S-Bahn, die S-Bahnen"],
+    ["Taxi", "das Taxi, die Taxis"],
+    ["Bus", "der Bus, die Busse"],
+    ["Zug", "der Zug, die Züge"],
+    ["Straßenbahn", "die Straßenbahn, die Straßenbahnen"],
+    ["U-Bahn", "die U-Bahn, die U-Bahnen"],
+    ["Flugzeug", "das Flugzeug, die Flugzeuge"],
+    ["Gleis", "das Gleis, die Gleise"],
+    ["Bahnsteig", "der Bahnsteig, die Bahnsteige"],
+    ["Koffer", "der Koffer, die Koffer"],
+    ["Tasche", "die Tasche, die Taschen"],
+    ["Gepäck (sg)", "das Gepäck"],
+    ["Haltestelle", "die Haltestelle, die Haltestellen"]
+]

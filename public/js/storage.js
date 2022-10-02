@@ -1,44 +1,33 @@
 const Storage = (function () {
 
+    const DEFAULT_ENABLED_TRAINING_SET = 'assets/trainingsets/vokabular_misc.json'
+
     const STORAGE_SCORE = 'STORAGE_SCORE'
+    const STORAGE_ENABLED_TRAINING_SETS = 'STORAGE_ENABLED_TRAINING_SETS'
 
-    function _toMap(flashcardsList) {
-        const map = {}
-        for (let card of flashcardsList) {
-            map[card.front] = card
-        }
-        return map
-    }
-
-    function _loadScore() {
+    function loadScore() {
         const scoreString = localStorage.getItem(STORAGE_SCORE) || '{}'
         return JSON.parse(scoreString)
     }
 
-    function _saveScore(serializedScore) {
+    function saveScore(serializedScore) {
         localStorage.setItem(STORAGE_SCORE, JSON.stringify(serializedScore))
     }
 
-    async function loadFlashcards(state = {}) {
-        const serializedScore = _loadScore()
-        const flashcardsJson = await (await fetch('/assets/flashcards.json')).json()
-        const flashcardsList = flashcardsJson.map(([front, back]) => ({
-            front, back, score: Score(serializedScore[front])
-        }))
-        state.flashcards = _toMap(flashcardsList)
+    // getEnabledTrainingSets :: () => [string]
+    function loadEnabledTrainingSets() {
+        return JSON.parse(localStorage.getItem(STORAGE_ENABLED_TRAINING_SETS) || `["${DEFAULT_ENABLED_TRAINING_SET}"]`)
     }
 
-    function saveFlashcards(state = {}) {
-        const { flashcards } = state
-        const serializedScore = {}
-        for (let key in flashcards) {
-            serializedScore[key] = flashcards[key].score.serialize()
-        }
-        _saveScore(serializedScore)
+    // setEnabledTrainingSets :: [string] => ()
+    function saveEnabledTrainingSets(enabledTrainingSets) {
+        localStorage.setItem(STORAGE_ENABLED_TRAINING_SETS, JSON.stringify(enabledTrainingSets))
     }
 
     return {
-        loadFlashcards,
-        saveFlashcards
+        loadScore,
+        saveScore,
+        loadEnabledTrainingSets,
+        saveEnabledTrainingSets
     }
 })()

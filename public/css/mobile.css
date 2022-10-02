@@ -1,4 +1,10 @@
 @media only screen and (max-width: 768px) {
+
+    .navbar .settings {
+        width: 48px;
+        height: 48px
+    }
+
     .input {
         width: 95%;
         font-size: 11px;
@@ -11,17 +17,18 @@
     .log-history .log {
         flex-direction: column;
         align-items: center;
-        /* padding-bottom: 8px; */
-        /* border-bottom: 1px dashed black; */
     }
 
     .correction {
-        /* flex-direction: column; */
-        /* align-items: center; */
         margin-top: 4px;
     }
 
-    /* .correction .arrow {
-        transform: rotate(90deg);
-    } */
+    .training-sets input {
+        width: 32px;
+        height: 32px;
+    }
+
+    .app-settings button {
+        align-self: center;
+    }
 }
