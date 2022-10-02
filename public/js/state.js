@@ -26,7 +26,7 @@ const State = (function () {
         const scoreBoard = {}
         const maxMemSize = Object.values(flashcards)[0].score.getMaxMemSize()
 
-        for (let i = -maxMemSize; i <= maxMemSize; i++) {
+        for (let i = 0; i <= maxMemSize; i++) {
             scoreBoard[i] = 0
         }
         for (let flashcard of Object.values(flashcards)) {
@@ -51,7 +51,7 @@ const State = (function () {
             maxMemSize: card.score.getMaxMemSize(),
             text
         })
-        if (state.logHistory.length > 5) {
+        if (state.logHistory.length > 3) {
             state.logHistory.pop()
         }
     }
@@ -63,8 +63,8 @@ const State = (function () {
             return flashcards[a].score.getLastModified() - flashcards[b].score.getLastModified()
         })
 
-        // ignore 5% most recent flashcards
-        let rustyFlashcards = sortedByLastModified.filter((_, i) => i < sortedByLastModified.length * .95)
+        // ignore 30% most recent flashcards
+        let rustyFlashcards = sortedByLastModified.filter((_, i) => i < sortedByLastModified.length * .7)
 
         // shuffle to get different order than the json file
         rustyFlashcards = shuffle(rustyFlashcards)
@@ -78,9 +78,24 @@ const State = (function () {
 
     // Depends on settings
     async function loadFlashcards(state = {}) {
+        state.flashcards = {}
+        for (let set of state.settings.trainingSets) {
+            if (!set.enabled) {
+                continue
+            }
+            for (let front in set.flashcards) {
+                if (front in state.flashcards) {
+                    continue
+                }
+                state.flashcards[front] = set.flashcards[front]
+            }
+        }
+    }
+
+    // withScore :: [[string]] => [{ front: string, back: string, score: Score }]
+    function withScore(flashcardsJson = []) {
         const serializedScore = Storage.loadScore()
-        const enabledTrainingSets = state.settings.trainingSets.filter(set => set.enabled)
-        const flashcardsJson = enabledTrainingSets.flatMap(set => set.flashcards)
+
         const flashcardsList = []
 
         const cache = {}
@@ -94,7 +109,7 @@ const State = (function () {
             cache[front] = back
             flashcardsList.push({ front, back, score: Score(serializedScore[front]) })
         })
-        state.flashcards = _toMap(flashcardsList)
+        return _toMap(flashcardsList)
     }
 
     function saveFlashcards(state = {}) {
@@ -114,11 +129,15 @@ const State = (function () {
 
         state.settings = {}
         state.settings.trainingSets = await Promise.all(
-            localTrainingSets.map(async s => ({
-                ...s,
-                enabled: enabledTrainingSets.includes(s.url),
-                flashcards: await fetch(s.url).then(x => x.json())
-            }))
+            localTrainingSets.map(async s => {
+
+                const flashcards = withScore(await fetch(s.url).then(x => x.json()))
+                return {
+                    ...s,
+                    enabled: enabledTrainingSets.includes(s.url),
+                    flashcards
+                }
+            })
         )
     }
 
@@ -137,6 +156,7 @@ const State = (function () {
         loadFlashcards,
         saveFlashcards,
         loadSettings,
-        saveSettings
+        saveSettings,
+        withScore
     }
 })()
