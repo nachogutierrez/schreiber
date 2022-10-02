@@ -107,7 +107,7 @@ const UI = (function () {
                 </div>
                 <div class='second-row'>
                     <span class='tag'>flashcards=${len}</span>
-                    <span class='tag'>progress=${progress}%</span>
+                    <span class='tag'>perfected=${progress}%</span>
                     <button>clear</button>
                 </div>
             </div>`
