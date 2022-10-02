@@ -51,7 +51,7 @@ const State = (function () {
             maxMemSize: card.score.getMaxMemSize(),
             text
         })
-        if (state.logHistory.length > 3) {
+        if (state.logHistory.length > 1) {
             state.logHistory.pop()
         }
     }
@@ -63,8 +63,8 @@ const State = (function () {
             return flashcards[a].score.getLastModified() - flashcards[b].score.getLastModified()
         })
 
-        // ignore 30% most recent flashcards
-        let rustyFlashcards = sortedByLastModified.filter((_, i) => i < sortedByLastModified.length * .7)
+        // ignore 10% most recent flashcards
+        let rustyFlashcards = sortedByLastModified.filter((_, i) => i < sortedByLastModified.length * .9)
 
         // shuffle to get different order than the json file
         rustyFlashcards = shuffle(rustyFlashcards)
