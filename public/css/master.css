@@ -77,6 +77,10 @@ body {
     margin-bottom: 8px;
 }
 
+.app-settings {
+    padding-bottom: 8px;
+}
+
 .grid-container {
     display: grid;
     align-items: center;

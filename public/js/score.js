@@ -2,14 +2,12 @@ const Score = function (initialState = {}) {
 
     const maxMemSize = initialState.maxMemSize || 3;
     const mem = initialState.mem || []
-    let sum = initialState.sum || 0
     let lastModified = initialState.lastModified || 0
 
     // hit=1, miss=-1
     function add(hitOrMiss) {
-        sum += hitOrMiss
         if (mem.push(hitOrMiss) > maxMemSize) {
-            sum -= mem.shift()
+            mem.shift()
         }
         lastModified = new Date().getTime()
     }
@@ -19,7 +17,7 @@ const Score = function (initialState = {}) {
     }
 
     function getSum() {
-        return sum
+        return mem.filter(x => x === Score.HIT).length
     }
 
     function getLastModified() {
@@ -38,7 +36,6 @@ const Score = function (initialState = {}) {
         return {
             maxMemSize,
             mem,
-            sum,
             lastModified
         }
     }
