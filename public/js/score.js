@@ -55,4 +55,4 @@ const Score = function (initialState = {}) {
 }
 
 Score.HIT = 1
-Score.MISS = -1
+Score.MISS = 0

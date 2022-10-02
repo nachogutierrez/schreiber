@@ -92,10 +92,24 @@ const UI = (function () {
     }
 
     function renderTrainingSet(trainingSet, i) {
+        const len = Object.values(trainingSet.flashcards).length
+        const perfectWords = Object.values(trainingSet.flashcards)
+            .filter(card => card.score.getSum() >= 3)
+            .length
+        const progress = (perfectWords * 100 / len).toFixed(0)
+        const completed = progress === '100'
+        const color = completed ? 'bg-green' : 'bg-beige'
         return (
-            `<div class='training-set'>
-                <input type="checkbox" data-index="${i}" ${trainingSet.enabled ? 'checked' : ''}>
-                ${trainingSet.name} (${trainingSet.flashcards.length} flashcards)
+            `<div class='training-set ${color}'>
+                <div class='first-row'>
+                    <input type="checkbox" data-index="${i}" ${trainingSet.enabled ? 'checked' : ''}>
+                    <p>${trainingSet.name}</p>
+                </div>
+                <div class='second-row'>
+                    <span class='tag'>flashcards=${len}</span>
+                    <span class='tag'>progress=${progress}%</span>
+                    <button>clear</button>
+                </div>
             </div>`
         )
     }
