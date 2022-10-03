@@ -1,4 +1,7 @@
-const Score = function (initialState = {}) {
+export const HIT = 1
+export const MISS = 0
+
+export const Score = function (initialState = {}) {
 
     const maxMemSize = initialState.maxMemSize || 3;
     const mem = initialState.mem || []
@@ -50,6 +53,3 @@ const Score = function (initialState = {}) {
         getMemSize
     }
 }
-
-Score.HIT = 1
-Score.MISS = 0
